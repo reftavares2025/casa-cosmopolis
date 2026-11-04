@@ -30,6 +30,7 @@ section{margin:32px 0}
 .opts input{margin-right:8px}
 input[type=text],input[type=tel]{width:100%;padding:12px;border-radius:10px;border:0;font-size:1rem}
 .btn{display:block;width:100%;margin-top:18px;background:var(--ok);color:#fff;border:0;border-radius:12px;padding:16px;font-size:1.1rem;font-weight:700;cursor:pointer;text-align:center;text-decoration:none}
+.sub{color:var(--mute);font-size:.95rem;margin:8px 0 0;text-align:center}
 .note{font-size:.85rem;color:#b9bdc8;margin-top:10px}
 .float{position:fixed;right:16px;bottom:16px;background:var(--ok);color:#fff;border-radius:99px;padding:14px 18px;font-weight:700;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.25)}
 #lb{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;padding:16px}#lb img{max-width:100%;max-height:100%}
@@ -45,7 +46,8 @@ footer{color:var(--mute);font-size:.85rem;text-align:center;padding:32px 16px 90
   <p>Terreno de <b>440 m²</b> no <b>Jardim Bela Vista III</b>, perto do Centro, do Hospital e do Clube Cosmopolitano. More em uma e alugue a outra, ou traga a família para perto, cada um com a sua casa.</p>
   <div class="price">R$ 669.000 <small>· aceita proposta e troca</small></div>
   <div class="chips"><b>5 dormitórios</b><b>3 banheiros</b><b>1 suíte</b><b>Água e luz separadas</b><b>Garagem coberta</b><b>Churrasqueira</b><b>Portão eletrônico</b></div>
-  <a class="btn" href="#quero">Quero agendar uma visita</a>
+  <a class="btn" href="https://wa.me/5519992283576?text=Ol%C3%A1%2C%20Daniel%21%20Vi%20o%20an%C3%BAncio%20das%202%20casas%20no%20Jardim%20Bela%20Vista%20III%20%28Cosm%C3%B3polis%29%20e%20quero%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">💬 Clique aqui e fale direto com o proprietário no WhatsApp</a>
+  <p class="sub">Tire suas dúvidas, peça mais fotos ou agende a visita. Atendimento direto com o Daniel, sem imobiliária.</p>
 
   <section class="grid2">
     <div class="card"><h3>🏠 Casa da frente</h3><ul><li>3 dormitórios</li><li>Sala, cozinha e banheiro</li><li>Garagem coberta com porcelanato</li></ul></div>
@@ -68,8 +70,8 @@ footer{color:var(--mute);font-size:.85rem;text-align:center;padding:32px 16px 90
   </section>
 
   <section id="quero" class="form">
-    <h2>Agende sua visita</h2>
-    <p>Responda 3 perguntas rápidas e fale direto com o proprietário no WhatsApp.</p>
+    <h2>Prefere já adiantar a conversa?</h2>
+    <p>Responda 3 perguntas rápidas e a mensagem para o proprietário já vai pronta no WhatsApp.</p>
     <form id="f">
       <label>1. Como você pretende comprar?</label>
       <div class="opts">
@@ -91,9 +93,9 @@ footer{color:var(--mute);font-size:.85rem;text-align:center;padding:32px 16px 90
     </form>
   </section>
 </div>
-<a class="float" href="#quero">💬 WhatsApp</a>
+<a class="float" href="https://wa.me/5519992283576?text=Ol%C3%A1%2C%20Daniel%21%20Vi%20o%20an%C3%BAncio%20das%202%20casas%20no%20Jardim%20Bela%20Vista%20III%20%28Cosm%C3%B3polis%29%20e%20quero%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener">💬 Falar com o proprietário</a>
 <div id="lb" onclick="this.style.display='none'"><img alt=""></div>
-<footer>Jardim Bela Vista III · Cosmópolis/SP · WhatsApp (19) 92283-5676 · <a href="privacidade.html">Política de Privacidade</a></footer>
+<footer>Jardim Bela Vista III · Cosmópolis/SP · WhatsApp do proprietário: (19) 99228-3576 · <a href="privacidade.html">Política de Privacidade</a></footer>
 <script>
 var g=document.getElementById('gal'),lb=document.getElementById('lb');
 for(var i=2;i<=20;i++){var n=(i<10?'0':'')+i,im=document.createElement('img');im.src='fotos/'+n+'.jpg';im.loading='lazy';im.alt='Foto '+n+' do imóvel';im.onclick=function(){lb.querySelector('img').src=this.src;lb.style.display='flex'};g.appendChild(im)}
@@ -103,7 +105,7 @@ document.getElementById('f').addEventListener('submit',function(e){
   var nome=document.getElementById('nome').value.trim(),troca=document.getElementById('troca').value.trim();
   var msg='Olá! Sou '+nome+' e vi o anúncio das 2 casas no Bela Vista III (Cosmópolis).\n• Forma de compra: '+pag+'\n• Prazo: '+prazo+(troca?'\n• Bem para troca: '+troca:'')+'\nQuero agendar uma visita.';
   try{if(window.gtag)gtag('event','conversion',{send_to:window.ADS_CONV||''})}catch(x){}
-  window.location.href='https://wa.me/5519922835676?text='+encodeURIComponent(msg);
+  window.location.href='https://wa.me/5519992283576?text='+encodeURIComponent(msg);
 });
 </script>
 </body>
