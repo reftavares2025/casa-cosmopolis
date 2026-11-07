@@ -8,6 +8,12 @@
 <meta property="og:title" content="2 casas no mesmo terreno de 440 m² – Cosmópolis/SP">
 <meta property="og:description" content="Mora em uma e aluga a outra. 5 dorms, 3 banheiros, R$ 669 mil. Aceita troca.">
 <meta property="og:image" content="fotos/01-CAPA-fachada.jpg">
+<!-- Meta Pixel: Pixel Casa Cosmopolis (conta do Daniel) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','983817330986010');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=983817330986010&ev=PageView&noscript=1" alt=""></noscript>
 <!-- GOOGLE ADS TAG: colar aqui o gtag de conversão quando for criado -->
 <style>
 :root{--bg:#fafaf7;--card:#fff;--ink:#16181d;--mute:#5b6070;--brand:#ffd400;--ok:#128c4a;--line:#e5e5e0}
@@ -99,13 +105,25 @@ footer{color:var(--mute);font-size:.85rem;text-align:center;padding:32px 16px 90
 <script>
 var g=document.getElementById('gal'),lb=document.getElementById('lb');
 for(var i=2;i<=20;i++){var n=(i<10?'0':'')+i,im=document.createElement('img');im.src='fotos/'+n+'.jpg';im.loading='lazy';im.alt='Foto '+n+' do imóvel';im.onclick=function(){lb.querySelector('img').src=this.src;lb.style.display='flex'};g.appendChild(im)}
+// Origem do visitante: vai no fim da mensagem do WhatsApp para o Daniel saber de onde veio
+var Q=new URLSearchParams(location.search),src=(Q.get('utm_source')||'').toLowerCase(),ORIG;
+if(/insta|ig/.test(src))ORIG='Instagram';else if(/face|fb|meta/.test(src)||Q.get('fbclid'))ORIG='Facebook';else if(/google/.test(src)||Q.get('gclid'))ORIG='Google';
+try{if(ORIG)sessionStorage.setItem('orig',ORIG);else ORIG=sessionStorage.getItem('orig')||'site'}catch(x){ORIG=ORIG||'site'}
+var REF='\n(ref: '+ORIG+')';
+function track(ev,data){try{if(window.fbq)fbq('track',ev,data||{})}catch(x){}try{if(window.gtag&&window.ADS_CONV)gtag('event','conversion',{send_to:window.ADS_CONV})}catch(x){}}
+// Botões diretos de WhatsApp: conta como Contato
+[].forEach.call(document.querySelectorAll('a[href^="https://wa.me"]'),function(a){
+  a.href=a.href+encodeURIComponent(REF);
+  a.addEventListener('click',function(){track('Contact',{content_name:'botao_whatsapp',origem:ORIG})});
+});
 document.getElementById('f').addEventListener('submit',function(e){
   e.preventDefault();
   var pag=(document.querySelector('input[name=pag]:checked')||{}).value,prazo=(document.querySelector('input[name=prazo]:checked')||{}).value;
   var nome=document.getElementById('nome').value.trim(),troca=document.getElementById('troca').value.trim();
-  var msg='Olá! Sou '+nome+' e vi o anúncio das 2 casas no Bela Vista III (Cosmópolis).\n• Forma de compra: '+pag+'\n• Prazo: '+prazo+(troca?'\n• Bem para troca: '+troca:'')+'\nQuero agendar uma visita.';
-  try{if(window.gtag)gtag('event','conversion',{send_to:window.ADS_CONV||''})}catch(x){}
-  window.location.href='https://wa.me/5519992283576?text='+encodeURIComponent(msg);
+  var msg='Olá! Sou '+nome+' e vi o anúncio das 2 casas no Bela Vista III (Cosmópolis).\n• Forma de compra: '+pag+'\n• Prazo: '+prazo+(troca?'\n• Bem para troca: '+troca:'')+'\nQuero agendar uma visita.'+REF;
+  // Formulário respondido: conta como Lead (com a resposta de pagamento e prazo)
+  track('Lead',{content_name:'formulario_3_perguntas',pagamento:pag,prazo:prazo,origem:ORIG});
+  setTimeout(function(){window.location.href='https://wa.me/5519992283576?text='+encodeURIComponent(msg)},400);
 });
 </script>
 </body>
