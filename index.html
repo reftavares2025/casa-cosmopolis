@@ -107,7 +107,9 @@ var g=document.getElementById('gal'),lb=document.getElementById('lb');
 for(var i=2;i<=20;i++){var n=(i<10?'0':'')+i,im=document.createElement('img');im.src='fotos/'+n+'.jpg';im.loading='lazy';im.alt='Foto '+n+' do imóvel';im.onclick=function(){lb.querySelector('img').src=this.src;lb.style.display='flex'};g.appendChild(im)}
 // Origem do visitante: vai no fim da mensagem do WhatsApp para o Daniel saber de onde veio
 var Q=new URLSearchParams(location.search),src=(Q.get('utm_source')||'').toLowerCase(),ORIG;
-if(/insta|ig/.test(src))ORIG='Instagram';else if(/face|fb|meta/.test(src)||Q.get('fbclid'))ORIG='Facebook';else if(/google/.test(src)||Q.get('gclid'))ORIG='Google';
+var ANUNCIO={carrossel:'carrossel',video_a:'vídeo A',video_b:'vídeo B',video_c:'vídeo C',imagem_a:'imagem A',imagem_b:'imagem B',imagem_c:'imagem C'}[(Q.get('utm_content')||'').toLowerCase()];
+if(/insta|ig/.test(src))ORIG='Instagram';else if(/face|fb|meta/.test(src)||Q.get('fbclid'))ORIG='Facebook/Instagram';else if(/google/.test(src)||Q.get('gclid'))ORIG='Google';
+if(ORIG&&ANUNCIO)ORIG+=' – '+ANUNCIO;
 try{if(ORIG)sessionStorage.setItem('orig',ORIG);else ORIG=sessionStorage.getItem('orig')||'site'}catch(x){ORIG=ORIG||'site'}
 var REF='\n(ref: '+ORIG+')';
 function track(ev,data){try{if(window.fbq)fbq('track',ev,data||{})}catch(x){}try{if(window.gtag&&window.ADS_CONV)gtag('event','conversion',{send_to:window.ADS_CONV})}catch(x){}}
